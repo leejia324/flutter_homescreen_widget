@@ -8,11 +8,11 @@ Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutte
 
 ## Features
 
-- 🎨 **Pure Flutter UI** — any `Widget` becomes your home screen widget
-- 📱 **iOS & Android** — WidgetKit (iOS 14+) and Glance (Android 12+)
-- 👆 **Tap actions** — map rectangular areas to action IDs and receive callbacks in Dart
-- 📐 **Multiple sizes** — small, medium, and large widget families with independent rendering
-- 🔄 **Auto-sync** — widget updates as soon as your app changes state
+- **Pure Flutter UI** — any `Widget` becomes your home screen widget
+- **iOS & Android** — WidgetKit (iOS 14+) and Glance (Android 12+)
+- **Tap actions** — map rectangular areas to action IDs and receive callbacks in Dart
+- **Multiple sizes** — small, medium, and large widget families with independent rendering
+- **Auto-sync** — widget updates as soon as your app changes state
 
 ## Getting started
 
@@ -20,7 +20,7 @@ Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutte
 
 ```yaml
 dependencies:
-  flutter_homescreen_widget: ^0.1.0
+ flutter_homescreen_widget: ^0.1.0
 ```
 
 ### Initialize
@@ -31,18 +31,18 @@ Register a `NavigatorKey` before `runApp` so the renderer can access the overlay
 final _navKey = GlobalKey<NavigatorState>();
 
 void main() {
-  FlutterHomescreenWidget.init(_navKey);
-  runApp(MyApp());
+ FlutterHomescreenWidget.init(_navKey);
+ runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: _navKey,
-      home: const HomePage(),
-    );
-  }
+ @override
+ Widget build(BuildContext context) {
+ return MaterialApp(
+ navigatorKey: _navKey,
+ home: const HomePage(),
+ );
+ }
 }
 ```
 
@@ -72,19 +72,19 @@ class MyApp extends StatelessWidget {
 
 ```dart
 await FlutterHomescreenWidget.update(
-  widgetName: 'CounterWidget',     // must match the native widget `kind`
-  size: const Size(329, 155),      // logical size to render at (medium)
-  content: CounterUI(count: _n),   // any Flutter widget
-  actions: [
-    WidgetAction(
-      id: 'increment',
-      area: const Rect.fromLTWH(0.6, 0.0, 0.4, 0.5), // top-right quadrant
-    ),
-    WidgetAction(
-      id: 'decrement',
-      area: const Rect.fromLTWH(0.6, 0.5, 0.4, 0.5), // bottom-right quadrant
-    ),
-  ],
+ widgetName: 'CounterWidget', // must match the native widget `kind`
+ size: const Size(329, 155), // logical size to render at (medium)
+ content: CounterUI(count: _n), // any Flutter widget
+ actions: [
+ WidgetAction(
+ id: 'increment',
+ area: const Rect.fromLTWH(0.6, 0.0, 0.4, 0.5), // top-right quadrant
+ ),
+ WidgetAction(
+ id: 'decrement',
+ area: const Rect.fromLTWH(0.6, 0.5, 0.4, 0.5), // bottom-right quadrant
+ ),
+ ],
 );
 ```
 
@@ -92,20 +92,20 @@ await FlutterHomescreenWidget.update(
 
 | Family | iOS logical size | Android dp |
 |--------|-----------------|-----------|
-| Small  | `Size(155, 155)` | `180×110` |
+| Small | `Size(155, 155)` | `180×110` |
 | Medium | `Size(329, 155)` | `360×110` |
-| Large  | `Size(329, 345)` | `360×280` |
+| Large | `Size(329, 345)` | `360×280` |
 
 ### Receive tap actions
 
 ```dart
 @override
 void initState() {
-  super.initState();
-  FlutterHomescreenWidget.onAction.listen((id) {
-    if (id == 'increment') _changeCount(1);
-    if (id == 'decrement') _changeCount(-1);
-  });
+ super.initState();
+ FlutterHomescreenWidget.onAction.listen((id) {
+ if (id == 'increment') _changeCount(1);
+ if (id == 'decrement') _changeCount(-1);
+ });
 }
 ```
 
@@ -119,15 +119,15 @@ await FlutterHomescreenWidget.reload(widgetName: 'CounterWidget');
 
 ```
 Flutter widget
-    │  rendered to PNG via RepaintBoundary (live Overlay)
-    ▼
+ │ rendered to PNG via RepaintBoundary (live Overlay)
+ ▼
 App Group (iOS) / internal storage (Android)
-    │  shared between app process and widget process
-    ▼
+ │ shared between app process and widget process
+ ▼
 WidgetKit / Glance renders the PNG on the home screen
-    │  user taps a defined action area
-    ▼
-URL scheme deep link  →  Flutter app receives action ID via onAction stream
+ │ user taps a defined action area
+ ▼
+URL scheme deep link → Flutter app receives action ID via onAction stream
 ```
 
 ## Limitations
