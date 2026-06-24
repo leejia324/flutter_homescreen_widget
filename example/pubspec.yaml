@@ -1,5 +1,5 @@
-name: flutter_widget_kit_example
-description: "Demonstrates how to use the flutter_widget_kit plugin."
+name: flutter_homescreen_widget_example
+description: "Demonstrates how to use the flutter_homescreen_widget plugin."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -17,7 +17,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_widget_kit:
+  flutter_homescreen_widget:
     path: ../
 
   # The following adds the Cupertino Icons font to your application.

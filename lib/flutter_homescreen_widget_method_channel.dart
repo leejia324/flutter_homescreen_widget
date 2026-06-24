@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-import 'flutter_widget_kit_platform_interface.dart';
+import 'flutter_homescreen_widget_platform_interface.dart';
 
-/// The default [FlutterWidgetKitPlatform] implementation using [MethodChannel]
+/// The default [FlutterHomescreenWidgetPlatform] implementation using [MethodChannel]
 /// and [EventChannel].
-class MethodChannelFlutterWidgetKit extends FlutterWidgetKitPlatform {
+class MethodChannelFlutterHomescreenWidget extends FlutterHomescreenWidgetPlatform {
   /// The method channel used to invoke native methods.
-  final _methodChannel = const MethodChannel('flutter_widget_kit');
+  final _methodChannel = const MethodChannel('flutter_homescreen_widget');
 
   /// The event channel used to receive tap-action events from native widgets.
-  final _eventChannel = const EventChannel('flutter_widget_kit/actions');
+  final _eventChannel = const EventChannel('flutter_homescreen_widget/actions');
 
   Stream<String>? _onActionStream;
 

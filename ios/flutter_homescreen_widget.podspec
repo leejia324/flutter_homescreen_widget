@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
-  s.name             = 'flutter_widget_kit'
+  s.name             = 'flutter_homescreen_widget'
   s.version          = '0.1.0'
   s.summary          = 'Update iOS WidgetKit home screen widgets using Flutter widgets as the UI.'
   s.description      = <<-DESC
-    flutter_widget_kit lets you render any Flutter widget tree to a PNG and push
+    flutter_homescreen_widget lets you render any Flutter widget tree to a PNG and push
     it to an iOS WidgetKit home screen widget. Define tappable action areas and
     receive callbacks in Dart — no Swift required from the host app.
   DESC
-  s.homepage         = 'https://github.com/leejia/flutter_widget_kit'
+  s.homepage         = 'https://github.com/leejia324/flutter_homescreen_widget'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'leejia' => 'leejia0324@dsm.hs.kr' }
   s.source           = { :path => '.' }

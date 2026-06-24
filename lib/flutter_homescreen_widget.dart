@@ -7,7 +7,7 @@
 /// final _navKey = GlobalKey<NavigatorState>();
 ///
 /// void main() {
-///   FlutterWidgetKit.init(_navKey);
+///   FlutterHomescreenWidget.init(_navKey);
 ///   runApp(MaterialApp(navigatorKey: _navKey, home: MyHome()));
 /// }
 /// ```
@@ -15,7 +15,7 @@
 /// Then update a widget:
 ///
 /// ```dart
-/// await FlutterWidgetKit.update(
+/// await FlutterHomescreenWidget.update(
 ///   widgetName: 'MyWidget',
 ///   size: const Size(329, 155),
 ///   content: MyWidgetUI(data: data),
@@ -30,18 +30,18 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 
-import 'flutter_widget_kit_platform_interface.dart';
+import 'flutter_homescreen_widget_platform_interface.dart';
 import 'src/widget_action.dart';
 import 'src/widget_renderer.dart';
 
 export 'src/widget_action.dart';
 
-/// Entry point for the flutter_widget_kit plugin.
+/// Entry point for the flutter_homescreen_widget plugin.
 ///
 /// All methods are static. Call [init] once at app startup, then use
 /// [update], [reload], and [onAction] anywhere in your app.
-class FlutterWidgetKit {
-  FlutterWidgetKit._();
+class FlutterHomescreenWidget {
+  FlutterHomescreenWidget._();
 
   /// Registers the app's [NavigatorState] key.
   ///
@@ -52,7 +52,7 @@ class FlutterWidgetKit {
   /// final _navKey = GlobalKey<NavigatorState>();
   ///
   /// void main() {
-  ///   FlutterWidgetKit.init(_navKey);
+  ///   FlutterHomescreenWidget.init(_navKey);
   ///   runApp(MaterialApp(navigatorKey: _navKey, home: MyHome()));
   /// }
   /// ```
@@ -74,7 +74,7 @@ class FlutterWidgetKit {
   /// - [pixelRatio] controls output resolution (default 3.0 for @3x assets).
   ///
   /// ```dart
-  /// await FlutterWidgetKit.update(
+  /// await FlutterHomescreenWidget.update(
   ///   widgetName: 'CounterWidget',
   ///   size: const Size(329, 155),
   ///   content: CounterUI(count: 5),
@@ -97,7 +97,7 @@ class FlutterWidgetKit {
       pixelRatio: pixelRatio,
     );
 
-    await FlutterWidgetKitPlatform.instance.updateWidget(
+    await FlutterHomescreenWidgetPlatform.instance.updateWidget(
       widgetName: widgetName,
       imageBytes: bytes,
       actions: actions.map((a) => a.toMap()).toList(),
@@ -109,7 +109,7 @@ class FlutterWidgetKit {
   /// Use this when the widget image is still valid but you want the OS to
   /// refresh the widget display (e.g. after the device wakes up).
   static Future<void> reload({required String widgetName}) {
-    return FlutterWidgetKitPlatform.instance.reloadWidget(
+    return FlutterHomescreenWidgetPlatform.instance.reloadWidget(
       widgetName: widgetName,
     );
   }
@@ -120,11 +120,11 @@ class FlutterWidgetKit {
   /// The app is brought to the foreground before the event is delivered.
   ///
   /// ```dart
-  /// FlutterWidgetKit.onAction.listen((id) {
+  /// FlutterHomescreenWidget.onAction.listen((id) {
   ///   if (id == 'increment') setState(() => count++);
   /// });
   /// ```
   static Stream<String> get onAction {
-    return FlutterWidgetKitPlatform.instance.onAction;
+    return FlutterHomescreenWidgetPlatform.instance.onAction;
   }
 }

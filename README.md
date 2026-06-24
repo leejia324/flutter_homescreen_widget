@@ -1,7 +1,7 @@
-# flutter_widget_kit
+# flutter_homescreen_widget
 
-[![pub version](https://img.shields.io/pub/v/flutter_widget_kit.svg)](https://pub.dev/packages/flutter_widget_kit)
-[![platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-blue)](https://pub.dev/packages/flutter_widget_kit)
+[![pub version](https://img.shields.io/pub/v/flutter_homescreen_widget.svg)](https://pub.dev/packages/flutter_homescreen_widget)
+[![platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-blue)](https://pub.dev/packages/flutter_homescreen_widget)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutter widgets as the UI — design everything in pure Dart, no Swift or Kotlin required.
@@ -20,7 +20,7 @@ Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutte
 
 ```yaml
 dependencies:
-  flutter_widget_kit: ^0.1.0
+  flutter_homescreen_widget: ^0.1.0
 ```
 
 ### Initialize
@@ -31,7 +31,7 @@ Register a `NavigatorKey` before `runApp` so the renderer can access the overlay
 final _navKey = GlobalKey<NavigatorState>();
 
 void main() {
-  FlutterWidgetKit.init(_navKey);
+  FlutterHomescreenWidget.init(_navKey);
   runApp(MyApp());
 }
 
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
 2. Add a **Widget Extension** target: `File → New → Target → Widget Extension`.
 3. Copy [`templates/ios/CounterWidget.swift`](templates/ios/CounterWidget.swift) into the extension and set `APP_GROUP_ID`.
 4. Register URL scheme `flutterhomewidget` in `Runner/Info.plist` → URL Types.
-5. Add `FlutterWidgetKitAppGroup` key to `Runner/Info.plist`.
+5. Add `FlutterHomescreenWidgetAppGroup` key to `Runner/Info.plist`.
 
 ### Android setup
 
@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
 ### Update a widget
 
 ```dart
-await FlutterWidgetKit.update(
+await FlutterHomescreenWidget.update(
   widgetName: 'CounterWidget',     // must match the native widget `kind`
   size: const Size(329, 155),      // logical size to render at (medium)
   content: CounterUI(count: _n),   // any Flutter widget
@@ -102,7 +102,7 @@ await FlutterWidgetKit.update(
 @override
 void initState() {
   super.initState();
-  FlutterWidgetKit.onAction.listen((id) {
+  FlutterHomescreenWidget.onAction.listen((id) {
     if (id == 'increment') _changeCount(1);
     if (id == 'decrement') _changeCount(-1);
   });
@@ -112,7 +112,7 @@ void initState() {
 ### Reload without re-rendering
 
 ```dart
-await FlutterWidgetKit.reload(widgetName: 'CounterWidget');
+await FlutterHomescreenWidget.reload(widgetName: 'CounterWidget');
 ```
 
 ## How it works
@@ -140,7 +140,7 @@ URL scheme deep link  →  Flutter app receives action ID via onAction stream
 
 ## Contributing
 
-Pull requests and issues are welcome at [github.com/leejia/flutter_widget_kit](https://github.com/leejia324/flutter_widget_kit).
+Pull requests and issues are welcome at [github.com/leejia/flutter_homescreen_widget](https://github.com/leejia324/flutter_homescreen_widget).
 
 ## License
 

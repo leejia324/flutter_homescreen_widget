@@ -21,7 +21,7 @@ class WidgetRenderer {
   /// final _navKey = GlobalKey<NavigatorState>();
   ///
   /// void main() {
-  ///   FlutterWidgetKit.init(_navKey);
+  ///   FlutterHomescreenWidget.init(_navKey);
   ///   runApp(MaterialApp(navigatorKey: _navKey, home: MyHome()));
   /// }
   /// ```
@@ -42,7 +42,7 @@ class WidgetRenderer {
     final overlay = _navigatorKey?.currentState?.overlay;
     if (overlay == null) {
       throw StateError(
-        'FlutterWidgetKit.init() must be called with a valid NavigatorKey '
+        'FlutterHomescreenWidget.init() must be called with a valid NavigatorKey '
         'before rendering widgets.',
       );
     }

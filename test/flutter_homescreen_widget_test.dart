@@ -2,13 +2,13 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_widget_kit/flutter_widget_kit_platform_interface.dart';
-import 'package:flutter_widget_kit/flutter_widget_kit_method_channel.dart';
+import 'package:flutter_homescreen_widget/flutter_homescreen_widget_platform_interface.dart';
+import 'package:flutter_homescreen_widget/flutter_homescreen_widget_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockFlutterWidgetKitPlatform
+class MockFlutterHomescreenWidgetPlatform
     with MockPlatformInterfaceMixin
-    implements FlutterWidgetKitPlatform {
+    implements FlutterHomescreenWidgetPlatform {
   String? lastWidgetName;
   List<Map<String, dynamic>>? lastActions;
   String? reloadedWidgetName;
@@ -38,19 +38,19 @@ class MockFlutterWidgetKitPlatform
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  test('MethodChannelFlutterWidgetKit is the default instance', () {
+  test('MethodChannelFlutterHomescreenWidget is the default instance', () {
     expect(
-      FlutterWidgetKitPlatform.instance,
-      isInstanceOf<MethodChannelFlutterWidgetKit>(),
+      FlutterHomescreenWidgetPlatform.instance,
+      isInstanceOf<MethodChannelFlutterHomescreenWidget>(),
     );
   });
 
   group('MockPlatform', () {
-    late MockFlutterWidgetKitPlatform mock;
+    late MockFlutterHomescreenWidgetPlatform mock;
 
     setUp(() {
-      mock = MockFlutterWidgetKitPlatform();
-      FlutterWidgetKitPlatform.instance = mock;
+      mock = MockFlutterHomescreenWidgetPlatform();
+      FlutterHomescreenWidgetPlatform.instance = mock;
     });
 
     test('updateWidget stores widgetName and actions', () async {

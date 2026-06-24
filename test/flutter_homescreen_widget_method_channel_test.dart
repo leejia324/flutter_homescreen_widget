@@ -1,16 +1,16 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_widget_kit/flutter_widget_kit_method_channel.dart';
+import 'package:flutter_homescreen_widget/flutter_homescreen_widget_method_channel.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  late MethodChannelFlutterWidgetKit platform;
-  const channel = MethodChannel('flutter_widget_kit');
+  late MethodChannelFlutterHomescreenWidget platform;
+  const channel = MethodChannel('flutter_homescreen_widget');
   final calls = <MethodCall>[];
 
   setUp(() {
-    platform = MethodChannelFlutterWidgetKit();
+    platform = MethodChannelFlutterHomescreenWidget();
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(channel, (call) async {
       calls.add(call);

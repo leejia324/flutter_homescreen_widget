@@ -5,11 +5,11 @@ import 'package:flutter/widgets.dart';
 /// Coordinates are relative (0.0–1.0) to the widget's rendered size,
 /// so the same [WidgetAction] works across all screen densities.
 ///
-/// When the user taps this area, [FlutterWidgetKit.onAction] emits [id].
+/// When the user taps this area, [FlutterHomescreenWidget.onAction] emits [id].
 class WidgetAction {
   /// A unique identifier for this action.
   ///
-  /// Received via [FlutterWidgetKit.onAction] when the user taps the area.
+  /// Received via [FlutterHomescreenWidget.onAction] when the user taps the area.
   final String id;
 
   /// The tappable region in relative coordinates (0.0–1.0).

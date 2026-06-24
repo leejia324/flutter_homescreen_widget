@@ -1,4 +1,4 @@
-package com.leejia.flutter_widget_kit
+package com.leejia.flutter_homescreen_widget
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -14,14 +14,14 @@ import org.json.JSONObject
 import java.io.File
 
 /**
- * Android platform implementation of flutter_widget_kit.
+ * Android platform implementation of flutter_homescreen_widget.
  *
  * Bridges Dart calls to the native AppWidget system:
  * - [updateWidget]: saves PNG + action JSON, then broadcasts an update.
  * - [reloadWidget]: broadcasts an update without changing stored data.
  * - [onAction]: EventChannel stream that emits action IDs from widget taps.
  */
-class FlutterWidgetKitPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
+class FlutterHomescreenWidgetPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
 
     private lateinit var methodChannel: MethodChannel
     private lateinit var eventChannel: EventChannel
@@ -30,10 +30,10 @@ class FlutterWidgetKitPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, E
 
     companion object {
         /** SharedPreferences file name used to share data with the widget process. */
-        const val PREFS_NAME = "flutter_widget_kit"
+        const val PREFS_NAME = "flutter_homescreen_widget"
 
         /** Singleton reference used by [MainActivity] to forward tap actions. */
-        var instance: FlutterWidgetKitPlugin? = null
+        var instance: FlutterHomescreenWidgetPlugin? = null
 
         /**
          * Forwards a widget tap action to Dart via the EventChannel.
@@ -52,10 +52,10 @@ class FlutterWidgetKitPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, E
         context = binding.applicationContext
         instance = this
 
-        methodChannel = MethodChannel(binding.binaryMessenger, "flutter_widget_kit")
+        methodChannel = MethodChannel(binding.binaryMessenger, "flutter_homescreen_widget")
         methodChannel.setMethodCallHandler(this)
 
-        eventChannel = EventChannel(binding.binaryMessenger, "flutter_widget_kit/actions")
+        eventChannel = EventChannel(binding.binaryMessenger, "flutter_homescreen_widget/actions")
         eventChannel.setStreamHandler(this)
     }
 

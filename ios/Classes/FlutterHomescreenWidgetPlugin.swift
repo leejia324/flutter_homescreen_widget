@@ -2,12 +2,12 @@ import Flutter
 import UIKit
 import WidgetKit
 
-/// The iOS platform implementation of flutter_widget_kit.
+/// The iOS platform implementation of flutter_homescreen_widget.
 ///
-/// Handles method calls from Dart via `flutter_widget_kit` MethodChannel,
-/// emits widget tap actions via `flutter_widget_kit/actions` EventChannel,
+/// Handles method calls from Dart via `flutter_homescreen_widget` MethodChannel,
+/// emits widget tap actions via `flutter_homescreen_widget/actions` EventChannel,
 /// and receives deep links from the widget URL scheme `flutterhomewidget://`.
-public class FlutterWidgetKitPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
+public class FlutterHomescreenWidgetPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
 
     private var eventSink: FlutterEventSink?
 
@@ -15,15 +15,15 @@ public class FlutterWidgetKitPlugin: NSObject, FlutterPlugin, FlutterStreamHandl
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let methodChannel = FlutterMethodChannel(
-            name: "flutter_widget_kit",
+            name: "flutter_homescreen_widget",
             binaryMessenger: registrar.messenger()
         )
         let eventChannel = FlutterEventChannel(
-            name: "flutter_widget_kit/actions",
+            name: "flutter_homescreen_widget/actions",
             binaryMessenger: registrar.messenger()
         )
 
-        let instance = FlutterWidgetKitPlugin()
+        let instance = FlutterHomescreenWidgetPlugin()
         registrar.addMethodCallDelegate(instance, channel: methodChannel)
         registrar.addApplicationDelegate(instance)
         eventChannel.setStreamHandler(instance)
@@ -62,7 +62,7 @@ public class FlutterWidgetKitPlugin: NSObject, FlutterPlugin, FlutterStreamHandl
         guard let appGroupId = appGroupIdentifier() else {
             result(FlutterError(
                 code: "NO_APP_GROUP",
-                message: "FlutterWidgetKitAppGroup is not set in Info.plist. See the setup guide.",
+                message: "FlutterHomescreenWidgetAppGroup is not set in Info.plist. See the setup guide.",
                 details: nil
             ))
             return
@@ -162,6 +162,6 @@ public class FlutterWidgetKitPlugin: NSObject, FlutterPlugin, FlutterStreamHandl
 
     /// Reads the App Group identifier from the host app's Info.plist.
     private func appGroupIdentifier() -> String? {
-        Bundle.main.object(forInfoDictionaryKey: "FlutterWidgetKitAppGroup") as? String
+        Bundle.main.object(forInfoDictionaryKey: "FlutterHomescreenWidgetAppGroup") as? String
     }
 }

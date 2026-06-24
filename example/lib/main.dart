@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_kit/flutter_widget_kit.dart';
+import 'package:flutter_homescreen_widget/flutter_homescreen_widget.dart';
 
 final _navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  FlutterHomeWidget.init(_navigatorKey);
+  FlutterHomescreenWidget.init(_navigatorKey);
   runApp(const MyApp());
 }
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: _navigatorKey,
-      title: 'flutter_home_widget example',
+      title: 'flutter_homescreen_widget example',
       home: const CounterPage(),
     );
   }
@@ -34,7 +34,7 @@ class _CounterPageState extends State<CounterPage> {
   @override
   void initState() {
     super.initState();
-    FlutterHomeWidget.onAction.listen((actionId) {
+    FlutterHomescreenWidget.onAction.listen((actionId) {
       if (actionId == 'increment') _changeCount(1);
       if (actionId == 'decrement') _changeCount(-1);
     });
@@ -47,7 +47,7 @@ class _CounterPageState extends State<CounterPage> {
 
   Future<void> _updateWidgets() async {
     // medium 위젯: 가로형, +/- 버튼 포함
-    await FlutterHomeWidget.update(
+    await FlutterHomescreenWidget.update(
       widgetName: 'CounterWidget',
       size: const Size(329, 155),
       content: CounterWidgetMedium(count: _count),
@@ -64,7 +64,7 @@ class _CounterPageState extends State<CounterPage> {
     );
 
     // small 위젯: 정사각형, 전체 탭 = increment
-    await FlutterHomeWidget.update(
+    await FlutterHomescreenWidget.update(
       widgetName: 'CounterWidgetSmall',
       size: const Size(155, 155),
       content: CounterWidgetSmall(count: _count),
