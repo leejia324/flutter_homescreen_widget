@@ -4,9 +4,9 @@ description: >-
   widgets as the UI. Design your widget in pure Dart — no Swift or Kotlin
   required. Supports tap actions, multiple widget sizes, and auto-sync.
 version: 0.1.0
-homepage: https://github.com/leejia/flutter_widget_kit
-repository: https://github.com/leejia/flutter_widget_kit
-issue_tracker: https://github.com/leejia/flutter_widget_kit/issues
+homepage: https://github.com/leejia324/flutter_widget_kit
+repository: https://github.com/leejia324/flutter_widget_kit
+issue_tracker: https://github.com/leejia324/flutter_widget_kit/issues
 
 environment:
   sdk: ^3.11.4

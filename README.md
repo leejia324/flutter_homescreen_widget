@@ -140,7 +140,7 @@ URL scheme deep link  →  Flutter app receives action ID via onAction stream
 
 ## Contributing
 
-Pull requests and issues are welcome at [github.com/leejia/flutter_widget_kit](https://github.com/leejia/flutter_widget_kit).
+Pull requests and issues are welcome at [github.com/leejia/flutter_widget_kit](https://github.com/leejia324/flutter_widget_kit).
 
 ## License
 
