@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Rename package from `flutter_widget_kit` to `flutter_homescreen_widget`.
+
 ## 0.1.0
 
 * Initial release.
