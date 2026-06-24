@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    res/xml/counter_widget_info.xml 에 저장하세요.
+
+    minWidth / minHeight: 위젯의 최소 크기 (dp)
+    updatePeriodMillis: 0 → Flutter 앱이 직접 업데이트 트리거 (배터리 절약)
+    targetCellWidth/Height: Android 12+ 그리드 셀 수
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="180dp"
+    android:minHeight="110dp"
+    android:targetCellWidth="3"
+    android:targetCellHeight="2"
+    android:updatePeriodMillis="0"
+    android:initialLayout="@layout/glance_default_loading_layout"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen" />
