@@ -1,3 +1,10 @@
+## 0.1.4
+
+* Fix template files: remove Korean comments, correct plugin class name to `FlutterHomescreenWidgetPlugin`.
+* Fix iOS template: add `FHWBackground` modifier for iOS 17+ `containerBackground` support.
+* Fix `doc/ios-setup.md`: correct `FlutterHomescreenWidgetAppGroup` key name.
+* Update README: clarify that minimal native boilerplate is still required.
+
 ## 0.1.3
 
 * Fix widget renderer to remove yellow text underlines via `DefaultTextStyle`.
