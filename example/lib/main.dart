@@ -39,7 +39,11 @@ class _ClockPageState extends State<ClockPage> {
   @override
   void initState() {
     super.initState();
-    _updateWidgets();
+    // Wait for the navigator/overlay to be fully mounted before rendering
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 300));
+      _updateWidgets();
+    });
     // Update widget every minute
     _timer = Timer.periodic(const Duration(minutes: 1), (_) {
       setState(() => _now = DateTime.now());
@@ -57,6 +61,7 @@ class _ClockPageState extends State<ClockPage> {
     final now = DateTime.now();
     setState(() => _now = now);
 
+    try {
     // Medium widget: landscape clock
     await FlutterHomescreenWidget.update(
       widgetName: 'ClockWidget',
@@ -70,6 +75,9 @@ class _ClockPageState extends State<ClockPage> {
       size: const Size(155, 155),
       content: ClockWidgetSmall(now: now),
     );
+    } catch (e) {
+      debugPrint('Widget update error: $e');
+    }
   }
 
   @override

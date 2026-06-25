@@ -35,7 +35,7 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<key>FlutterHomeWidgetAppGroup</key>
+	<key>FlutterHomescreenWidgetAppGroup</key>
 	<string>group.com.leejia.flutterhomewidget</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

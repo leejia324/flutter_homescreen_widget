@@ -1,3 +1,10 @@
+## 0.1.3
+
+* Fix widget renderer to remove yellow text underlines via `DefaultTextStyle`.
+* Fix iOS 17+ white widget background by using image as `containerBackground`.
+* Update example to glassmorphism clock widget.
+* Fix iOS minimum deployment target to 14.0 in example Podfile.
+
 ## 0.1.2
 
 * Fix pubspec description length.

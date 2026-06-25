@@ -63,7 +63,16 @@ class WidgetRenderer {
             key: key,
             child: MediaQuery(
               data: const MediaQueryData(),
-              child: widget,
+              child: DefaultTextStyle(
+                style: const TextStyle(
+                  decoration: TextDecoration.none,
+                  color: Color(0xFFFFFFFF),
+                ),
+                child: Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: widget,
+                ),
+              ),
             ),
           ),
         ),

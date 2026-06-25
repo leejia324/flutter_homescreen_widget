@@ -1,20 +1,10 @@
-// ============================================================
-// flutter_home_widget — iOS WidgetKit Extension 템플릿
-//
-// 사용법:
-// 1. Xcode → File → New → Target → Widget Extension 추가
-// 2. 이 파일을 해당 타겟에 복붙
-// 3. APP_GROUP_ID 를 본인 값으로 교체
-// 4. URL Scheme "flutterhomewidget" 을 Info.plist에 등록
-// ============================================================
-
 import WidgetKit
 import SwiftUI
 
-// MARK: - 설정값 (수정 필요)
-private let APP_GROUP_ID = "group.com.leejia.flutterhomewidget" // Xcode → Signing & Capabilities → App Groups
+// MARK: - Config (edit this)
+private let APP_GROUP_ID = "group.com.leejia.flutterhomewidget"
 
-// MARK: - 공통 모델
+// MARK: - Shared model
 
 struct FHWAction: Identifiable, Decodable {
     let id: String
@@ -30,29 +20,26 @@ struct FHWEntry: TimelineEntry {
     let actions: [FHWAction]
 }
 
-// MARK: - 공통 로더
+// MARK: - Loader
 
 func loadEntry(widgetName: String) -> FHWEntry {
     let container = FileManager.default.containerURL(
         forSecurityApplicationGroupIdentifier: APP_GROUP_ID
     )
-
     var image: UIImage?
     if let url = container?.appendingPathComponent("\(widgetName).png"),
        let data = try? Data(contentsOf: url) {
         image = UIImage(data: data)
     }
-
     var actions: [FHWAction] = []
     if let url = container?.appendingPathComponent("\(widgetName)_actions.json"),
        let data = try? Data(contentsOf: url) {
         actions = (try? JSONDecoder().decode([FHWAction].self, from: data)) ?? []
     }
-
     return FHWEntry(date: .now, image: image, actions: actions)
 }
 
-// MARK: - 공통 View
+// MARK: - Shared view
 
 struct FHWView: View {
     let entry: FHWEntry
@@ -60,13 +47,9 @@ struct FHWView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                if let image = entry.image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } else {
+                if entry.image == nil {
                     Color(.systemGray5)
-                    Text("앱을 열어 위젯을 업데이트하세요")
+                    Text("Open the app to update the widget")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -88,59 +71,90 @@ struct FHWView: View {
                 }
             }
         }
+        .modifier(FHWBackground(image: entry.image))
     }
 }
 
-// MARK: - Medium 위젯 (가로형, +/- 버튼)
+// MARK: - Background modifier (image as containerBackground on iOS 17+)
 
-struct CounterWidgetProvider: TimelineProvider {
+struct FHWBackground: ViewModifier {
+    let image: UIImage?
+
+    func body(content: Content) -> some View {
+        if #available(iOSApplicationExtension 17.0, *) {
+            content
+                .containerBackground(for: .widget) {
+                    if let img = image {
+                        Image(uiImage: img)
+                            .resizable()
+                            .scaledToFill()
+                    } else {
+                        Color(.systemGray5)
+                    }
+                }
+        } else {
+            ZStack {
+                if let img = image {
+                    Image(uiImage: img)
+                        .resizable()
+                        .scaledToFill()
+                }
+                content
+            }
+        }
+    }
+}
+
+// MARK: - Medium widget
+
+struct ClockWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> FHWEntry { FHWEntry(date: .now, image: nil, actions: []) }
-    func getSnapshot(in context: Context, completion: @escaping (FHWEntry) -> Void) { completion(loadEntry(widgetName: "CounterWidget")) }
+    func getSnapshot(in context: Context, completion: @escaping (FHWEntry) -> Void) { completion(loadEntry(widgetName: "ClockWidget")) }
     func getTimeline(in context: Context, completion: @escaping (Timeline<FHWEntry>) -> Void) {
-        completion(Timeline(entries: [loadEntry(widgetName: "CounterWidget")], policy: .never))
+        completion(Timeline(entries: [loadEntry(widgetName: "ClockWidget")], policy: .after(.now.addingTimeInterval(60))))
     }
 }
 
-struct CounterWidget: Widget {
-    let kind = "CounterWidget"
+struct ClockWidget: Widget {
+    let kind = "ClockWidget"
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CounterWidgetProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: ClockWidgetProvider()) { entry in
             FHWView(entry: entry)
         }
-        .configurationDisplayName("Counter (Medium)")
-        .description("탭으로 카운터를 조작하는 위젯")
+        .configurationDisplayName("Clock (Medium)")
+        .description("Glassmorphism clock widget")
         .supportedFamilies([.systemMedium])
     }
 }
 
-// MARK: - Small 위젯 (정사각형, 탭하면 +1)
+// MARK: - Small widget
 
-struct CounterWidgetSmallProvider: TimelineProvider {
+struct ClockWidgetSmallProvider: TimelineProvider {
     func placeholder(in context: Context) -> FHWEntry { FHWEntry(date: .now, image: nil, actions: []) }
-    func getSnapshot(in context: Context, completion: @escaping (FHWEntry) -> Void) { completion(loadEntry(widgetName: "CounterWidgetSmall")) }
+    func getSnapshot(in context: Context, completion: @escaping (FHWEntry) -> Void) { completion(loadEntry(widgetName: "ClockWidgetSmall")) }
     func getTimeline(in context: Context, completion: @escaping (Timeline<FHWEntry>) -> Void) {
-        completion(Timeline(entries: [loadEntry(widgetName: "CounterWidgetSmall")], policy: .never))
+        completion(Timeline(entries: [loadEntry(widgetName: "ClockWidgetSmall")], policy: .after(.now.addingTimeInterval(60))))
     }
 }
 
-struct CounterWidgetSmall: Widget {
-    let kind = "CounterWidgetSmall"
+struct ClockWidgetSmall: Widget {
+    let kind = "ClockWidgetSmall"
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CounterWidgetSmallProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: ClockWidgetSmallProvider()) { entry in
             FHWView(entry: entry)
         }
-        .configurationDisplayName("Counter (Small)")
-        .description("탭하면 카운터가 +1 증가")
+        .configurationDisplayName("Clock (Small)")
+        .description("Compact glassmorphism clock")
         .supportedFamilies([.systemSmall])
     }
 }
 
-// MARK: - WidgetBundle (두 위젯을 함께 등록)
+// MARK: - WidgetBundle
 
 @main
-struct CounterWidgetBundle: WidgetBundle {
+struct ClockWidgetBundle: WidgetBundle {
     var body: some Widget {
-        CounterWidget()
-        CounterWidgetSmall()
+        ClockWidget()
+        ClockWidgetSmall()
     }
 }

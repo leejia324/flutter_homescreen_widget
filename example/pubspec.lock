@@ -75,6 +75,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_homescreen_widget:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.1.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -88,13 +95,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_widget_kit:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.1.0"
   fuchsia_remote_debug_protocol:
     dependency: transitive
     description: flutter
