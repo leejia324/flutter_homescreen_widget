@@ -1,33 +1,33 @@
-# Android 설정 가이드
+# Android Setup Guide
 
-## 1. Glance 의존성 추가
+## 1. Add Glance dependencies
 
-`android/app/build.gradle.kts` 의 `dependencies` 블록에 추가:
+In `android/app/build.gradle.kts`, add to the `dependencies` block:
 
 ```kotlin
 implementation("androidx.glance:glance-appwidget:1.1.0")
 implementation("androidx.glance:glance-material3:1.1.0")
 ```
 
-## 2. 템플릿 파일 복사
+## 2. Copy the widget template
 
-`templates/android/CounterWidget.kt` 를
-`android/app/src/main/kotlin/<your/package>/CounterWidget.kt` 에 복사 후
-파일 상단 `package` 와 `WIDGET_NAME` 수정:
+Copy `templates/android/CounterWidget.kt` to
+`android/app/src/main/kotlin/<your/package>/CounterWidget.kt`
+and update the package declaration and widget name constant:
 
 ```kotlin
-package com.yourpackage          // 본인 패키지명
-private const val WIDGET_NAME = "CounterWidget"  // FlutterHomeWidget.update(widgetName:) 과 동일
+package com.yourpackage
+private const val WIDGET_NAME = "CounterWidget" // must match FlutterHomescreenWidget.update(widgetName: ...)
 ```
 
-## 3. 위젯 정보 XML 추가
+## 3. Copy the widget info XML
 
-`templates/android/counter_widget_info.xml` 을
-`android/app/src/main/res/xml/counter_widget_info.xml` 에 복사.
+Copy `templates/android/counter_widget_info.xml` to
+`android/app/src/main/res/xml/counter_widget_info.xml`.
 
-## 4. AndroidManifest.xml 에 리시버 등록
+## 4. Register the receiver in AndroidManifest.xml
 
-`<application>` 태그 안에 추가:
+Inside the `<application>` tag:
 
 ```xml
 <receiver
@@ -42,13 +42,10 @@ private const val WIDGET_NAME = "CounterWidget"  // FlutterHomeWidget.update(wid
 </receiver>
 ```
 
-## 5. MainActivity 수정
+## 5. Update MainActivity
 
-`templates/android/MainActivity.kt` 의 `handleWidgetAction` 로직을
-기존 `MainActivity.kt` 에 추가 (onCreate, onNewIntent).
+Merge the `handleWidgetAction` logic from `templates/android/MainActivity.kt` into your existing `MainActivity.kt` (add calls in `onCreate` and `onNewIntent`).
 
-## 6. 확인
+## 6. Verify
 
-에뮬레이터 또는 실기기 홈 화면에서 위젯 추가.
-앱에서 `FlutterHomeWidget.update()` 호출 시 위젯이 업데이트되어야 합니다.
-위젯의 + / - 버튼 탭 시 앱이 열리고 `FlutterHomeWidget.onAction` 스트림으로 actionId가 전달됩니다.
+Add the widget to the home screen on an emulator or device, then call `FlutterHomescreenWidget.update()` from Dart. Tapping the widget should open the app and deliver the action ID via `FlutterHomescreenWidget.onAction`.

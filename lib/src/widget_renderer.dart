@@ -50,8 +50,6 @@ class WidgetRenderer {
     final completer = Completer<Uint8List>();
     final key = GlobalKey();
 
-    // Insert the widget off-screen so the Flutter engine can lay it out
-    // and paint it with full access to fonts and images.
     final entry = OverlayEntry(
       builder: (_) => Positioned(
         left: -size.width * 2,

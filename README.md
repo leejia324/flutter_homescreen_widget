@@ -4,11 +4,14 @@
 [![platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-blue)](https://pub.dev/packages/flutter_homescreen_widget)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutter widgets as the UI — design everything in pure Dart, no Swift or Kotlin required.
+Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutter widgets as the UI. Design your widget entirely in Dart — only minimal native boilerplate (copy-paste templates provided) required.
+
+<img src="img.png" width="240"/>
+<img src="img_2.png" width="240"/>
 
 ## Features
 
-- **Pure Flutter UI** — any `Widget` becomes your home screen widget
+- **Flutter UI** — any `Widget` becomes your home screen widget
 - **iOS & Android** — WidgetKit (iOS 14+) and Glance (Android 12+)
 - **Tap actions** — map rectangular areas to action IDs and receive callbacks in Dart
 - **Multiple sizes** — small, medium, and large widget families with independent rendering
