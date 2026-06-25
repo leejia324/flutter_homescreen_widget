@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'flutter_homescreen_widget'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Update iOS WidgetKit home screen widgets using Flutter widgets as the UI.'
   s.description      = <<-DESC
     flutter_homescreen_widget lets you render any Flutter widget tree to a PNG and push

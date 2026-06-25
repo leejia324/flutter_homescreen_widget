@@ -1,3 +1,8 @@
+## 0.1.2
+
+* Fix pubspec description length.
+* Translate example comments to English.
+
 ## 0.1.1
 
 * Rename package from `flutter_widget_kit` to `flutter_homescreen_widget`.
