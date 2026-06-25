@@ -46,7 +46,7 @@ class _CounterPageState extends State<CounterPage> {
   }
 
   Future<void> _updateWidgets() async {
-    // medium 위젯: 가로형, +/- 버튼 포함
+    // Medium widget: landscape layout with +/- buttons
     await FlutterHomescreenWidget.update(
       widgetName: 'CounterWidget',
       size: const Size(329, 155),
@@ -63,7 +63,7 @@ class _CounterPageState extends State<CounterPage> {
       ],
     );
 
-    // small 위젯: 정사각형, 전체 탭 = increment
+    // Small widget: square layout, full tap = increment
     await FlutterHomescreenWidget.update(
       widgetName: 'CounterWidgetSmall',
       size: const Size(155, 155),
@@ -108,7 +108,7 @@ class _CounterPageState extends State<CounterPage> {
   }
 }
 
-/// Medium 위젯 UI (가로형, +/- 버튼)
+/// Medium widget UI — landscape layout with increment/decrement buttons.
 class CounterWidgetMedium extends StatelessWidget {
   final int count;
   const CounterWidgetMedium({super.key, required this.count});
@@ -154,7 +154,7 @@ class CounterWidgetMedium extends StatelessWidget {
   }
 }
 
-/// Small 위젯 UI (정사각형, 탭하면 +1)
+/// Small widget UI — square layout, tap anywhere to increment.
 class CounterWidgetSmall extends StatelessWidget {
   final int count;
   const CounterWidgetSmall({super.key, required this.count});
@@ -179,7 +179,7 @@ class CounterWidgetSmall extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          const Text('탭하여 +1',
+          const Text('Tap to +1',
               style: TextStyle(color: Colors.white38, fontSize: 11)),
         ],
       ),

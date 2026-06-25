@@ -1,8 +1,8 @@
 name: flutter_homescreen_widget
 description: >-
-  Update iOS WidgetKit and Android Glance home screen widgets using Flutter
-  widgets as the UI. Design your widget in pure Dart — no Swift or Kotlin
-  required. Supports tap actions, multiple widget sizes, and auto-sync.
+  Update iOS WidgetKit and Android Glance widgets using Flutter as the UI.
+  Pure Dart — no Swift or Kotlin required. Supports tap actions and multiple
+  sizes.
 version: 0.1.1
 homepage: https://github.com/leejia324/flutter_homescreen_widget
 repository: https://github.com/leejia324/flutter_homescreen_widget
