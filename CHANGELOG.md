@@ -1,3 +1,9 @@
+## 0.1.5
+
+* Add Android Glance widget setup to example app.
+* Fix example app to render widgets with rounded corners on Android.
+* Add example image to README.
+
 ## 0.1.4
 
 * Fix template files: remove Korean comments, correct plugin class name to `FlutterHomescreenWidgetPlugin`.
