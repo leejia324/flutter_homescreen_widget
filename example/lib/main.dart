@@ -124,7 +124,9 @@ class ClockWidgetMedium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(fit: StackFit.expand, children: [
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(24),
+      child: Stack(fit: StackFit.expand, children: [
       _Background(),
       Positioned(top: -40, right: -20, child: _GlowCircle(160, Colors.purpleAccent.withOpacity(0.25))),
       Positioned(bottom: -30, left: 60, child: _GlowCircle(100, Colors.blueAccent.withOpacity(0.2))),
@@ -176,7 +178,7 @@ class ClockWidgetMedium extends StatelessWidget {
           ),
         ),
       ),
-    ]);
+    ]));
   }
 }
 
@@ -187,28 +189,31 @@ class ClockWidgetSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(fit: StackFit.expand, children: [
-      _Background(),
-      Positioned(top: -30, right: -20, child: _GlowCircle(110, Colors.purpleAccent.withOpacity(0.25))),
-      Positioned(bottom: -20, left: -10, child: _GlowCircle(80, Colors.blueAccent.withOpacity(0.2))),
-      Padding(
-        padding: const EdgeInsets.all(12),
-        child: _GlassCard(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(_formatTime(now),
-                style: const TextStyle(
-                    color: Colors.white, fontSize: 36,
-                    fontWeight: FontWeight.w200, letterSpacing: -1.5, height: 1)),
-            const SizedBox(height: 6),
-            Text(_dayOfWeek(now),
-                style: TextStyle(color: Colors.white.withOpacity(0.45), fontSize: 10, letterSpacing: 2)),
-            const SizedBox(height: 6),
-            Text(_formatDateShort(now),
-                style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 12)),
-          ]),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(24),
+      child: Stack(fit: StackFit.expand, children: [
+        _Background(),
+        Positioned(top: -30, right: -20, child: _GlowCircle(110, Colors.purpleAccent.withOpacity(0.25))),
+        Positioned(bottom: -20, left: -10, child: _GlowCircle(80, Colors.blueAccent.withOpacity(0.2))),
+        Padding(
+          padding: const EdgeInsets.all(12),
+          child: _GlassCard(
+            child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(_formatTime(now),
+                  style: const TextStyle(
+                      color: Colors.white, fontSize: 36,
+                      fontWeight: FontWeight.w200, letterSpacing: -1.5, height: 1)),
+              const SizedBox(height: 6),
+              Text(_dayOfWeek(now),
+                  style: TextStyle(color: Colors.white.withOpacity(0.45), fontSize: 10, letterSpacing: 2)),
+              const SizedBox(height: 6),
+              Text(_formatDateShort(now),
+                  style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 12)),
+            ]),
+          ),
         ),
-      ),
-    ]);
+      ]),
+    );
   }
 }
 

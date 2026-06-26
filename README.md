@@ -7,7 +7,7 @@
 Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutter widgets as the UI. Design your widget entirely in Dart — only minimal native boilerplate (copy-paste templates provided) required.
 
 <img src="img.png" width="240"/>
-<img src="img_2.png" width="240"/>
+<img src="img_3.png" width="240"/>
 
 ## Features
 
@@ -23,7 +23,7 @@ Update **iOS WidgetKit** and **Android Glance** home screen widgets using Flutte
 
 ```yaml
 dependencies:
- flutter_homescreen_widget: ^0.1.0
+ flutter_homescreen_widget: ^<latest version>
 ```
 
 ### Initialize

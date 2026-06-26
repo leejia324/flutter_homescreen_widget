@@ -3,7 +3,7 @@ description: >-
   Update iOS WidgetKit and Android Glance widgets using Flutter as the UI.
   Pure Dart — no Swift or Kotlin required. Supports tap actions and multiple
   sizes.
-version: 0.1.4
+version: 0.1.5
 homepage: https://github.com/leejia324/flutter_homescreen_widget
 repository: https://github.com/leejia324/flutter_homescreen_widget
 issue_tracker: https://github.com/leejia324/flutter_homescreen_widget/issues
